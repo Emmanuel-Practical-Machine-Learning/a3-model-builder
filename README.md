@@ -3,7 +3,7 @@ Adapted by Mark Sherman <shermanm@emmanuel.edu> from MIT 6.S198 under Creative C
 
 This assignment is based on work by Yaakov Helman, Natalie Lao, and  Hal Abelson
 
-![](https://lh3.googleusercontent.com/qBDPx-FTuM_22gREmfB3FkFFCz8Bk0ewLnFHyRALHMXnzdh7MaD-L1niGa5JAmSmvzjagarEeteRhDSv5fhs4le1w3hLQOBMiGrBL79Bf8XzzNTcl_ZEdDQiEoC0nUx23hBrRY99)
+![funny comic!](img/RM_img_1.png)
 
 # 1: Building models with model builder
 
@@ -29,11 +29,11 @@ See [BACKGROUND.md](BACKGROUND.md) for more on these shape data structures.
 
 **Selecting the Custom model for MNIST** will produce an initial network with three layers. At the top is the layer with the input images:
 
-![](https://lh5.googleusercontent.com/1ajH17TiXFNjdnnrQmT75TLz1-UOXrPMOJjVLWEfwyqJ35MNywJFCsXCj7_VwlJ7YDaVQ3F8pn_zgc4b6e0IQk3LWfC5rBDWfD_uXsSCAmwsFh7agAmzD1CYSbK1PZn7rmpolo22)
+![input image layer](img/RM_img_2.png)
 
 At the bottom is the Label layer with 10 values: one for each digit. Just above the Label layer is a processing layer called Softmax Cross-Entropy that also has 10 inputs and 10 outputs (again because we have 10 categories). See [BACKGROUND.md](BACKGROUND.md) for how Softmax Cross-Entropy layer works.
 
-![](https://lh3.googleusercontent.com/PPSxxw2emMunZ3U5NSxCMJG9dzd1Qzaaeg9suLt9xKiu7X8ORvsSLiKIdssmEcR1Ji8A2hqfWGFEZ90PBsQVzg3qknouVx1ZMfj-MdMNXEC4k0jZsiBPFSP6k_QCj5CDY4yvMzV0)
+![Softmax Cros-Entropy and Label layer](img/RM_img_3.png)
 
 ## Problem 0
 
@@ -52,13 +52,13 @@ We can make the model valid by adding two more layers.
 
 Note the input and output shapes in the top and bottom left corners of each layer, and also the "Op type" menu, which allows you to change the type of layer.
 
-![](https://lh3.googleusercontent.com/Tg1BFwrSis-YKYngnJ7WoCKb_uDG173b_uFMt5D-n2GSqfbwi5bcRilQ9ZUyY7WmnQEL30NyHG8RK7rJlYHqE0PcnILNcy_GAYj_y88nRLbQw5AYBXKN0VAAYO4e6BfT3JiadvBz)
+![Flatten Layer](img/RM_img_4.png)
 
 The flatten layer takes its input, which is is a 3-D tensor of shape `[28,28,1]`, and flattens it into a 1-D vector `x=[x1,x2,...,x784]` of shape `28×28×1=[784]`.
 
 The second added later is a Fully Connected layer with 10 hidden units. "Hidden" means that the units are neither input nor output. "Fully connected" means that each unit is connected to all 784 inputs and all 10 outputs.
 
-![](https://lh6.googleusercontent.com/5AHZGG8QDzEdCRRKU2EM7XmbK76t3orouqoUt0a6oJw40kFqZQB7WPFHG1N67B4m9LJ6-YneWxCK55E0XCSyiBlz6BPf0jt-nTBaZWeIgXKtFhGFPk14vRP2QfUJet2PfKv3GHHh)
+![Fully connected layer](img/RM_img_5.png)
 
 The Fully Connected (FC) layer is made up of a number of "hidden units", in this case 10 units, call them `u1,u2,...,u10`. Each unit `uj` has a vector of weights `wj = [wj1, wj2, ..., wj784]` and a bias `bj`. Each unit `uj` computes the value `wj ᐧ x + bj`. Generally, you will see this computation expressed in the more compact form `Wx + b` , where W is a 10×784 matrix and b is a vector of length 10. Initially, they are set to random values and the values change as the network is trained. (It's common to use the term "weights" to refer to both weights and biases.)
 
